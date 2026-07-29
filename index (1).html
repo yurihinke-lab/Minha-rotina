@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Minha Rotina">
+<meta name="theme-color" content="#0e0e10">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<title>Minha Rotina</title>
+<style>
+  :root {
+    --bg: #0e0e10;
+    --surface: #18181b;
+    --surface2: #222226;
+    --border: #2e2e33;
+    --accent: #7c6af7;
+    --accent2: #a89cf7;
+    --now: #22c55e;
+    --next: #f59e0b;
+    --text: #f4f4f5;
+    --muted: #71717a;
+    --danger: #ef4444;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  header {
+    padding: 16px 16px 0;
+    position: sticky;
+    top: 0;
+    background: var(--bg);
+    z-index: 10;
+  }
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+  .header-top h1 { font-size: 18px; font-weight: 700; letter-spacing: -0.3px; }
+  .clock { font-size: 22px; font-weight: 700; color: var(--accent2); font-variant-numeric: tabular-nums; }
+
+  /* BANNER ATUAL/PRÓXIMA */
+  .banner {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .banner-card {
+    flex: 1;
+    background: var(--surface);
+    border-radius: 10px;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+  }
+  .banner-card.now { border-color: var(--now); background: #052e16; }
+  .banner-card.next { border-color: var(--next); background: #1c1400; }
+  .banner-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .banner-card.now .banner-label { color: var(--now); }
+  .banner-card.next .banner-label { color: var(--next); }
+  .banner-time { font-size: 11px; color: var(--muted); margin-bottom: 2px; }
+  .banner-task { font-size: 13px; font-weight: 600; line-height: 1.3; }
+
+  /* TABS DIAS */
+  .tabs {
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    scrollbar-width: none;
+  }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tab {
+    flex-shrink: 0;
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .tab.active { background: var(--accent); color: white; border-color: var(--accent); }
+  .tab.today { border-color: var(--accent2); color: var(--accent2); }
+  .tab.active.today { background: var(--accent); color: white; }
+
+  /* LISTA */
+  .list { padding: 0 16px 80px; }
+  .block {
+    border-radius: 10px;
+    margin-bottom: 6px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    transition: border-color 0.2s;
+  }
+  .block.now { border-color: var(--now); background: #052e16; }
+  .block.next-block { border-color: var(--next); }
+  .block-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    cursor: pointer;
+  }
+  .block-time {
+    font-size: 11px;
+    color: var(--muted);
+    min-width: 90px;
+    font-variant-numeric: tabular-nums;
+  }
+  .block.now .block-time { color: var(--now); font-weight: 600; }
+  .block.next-block .block-time { color: var(--next); font-weight: 600; }
+  .block-title {
+    flex: 1;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+  .block-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--border);
+    flex-shrink: 0;
+  }
+  .block.now .block-dot { background: var(--now); }
+  .block.next-block .block-dot { background: var(--next); }
+
+  /* SUB-ITENS */
+  .sub-items {
+    display: none;
+    padding: 0 12px 10px 22px;
+    border-top: 1px solid var(--border);
+  }
+  .block.open .sub-items { display: block; }
+  .sub-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 12px;
+    line-height: 1.4;
+  }
+  .sub-item:last-child { border-bottom: none; }
+  .sub-icon { font-size: 13px; flex-shrink: 0; margin-top: 1px; }
+  .sub-text { color: #d4d4d8; }
+  .sub-text strong { color: var(--text); font-weight: 600; }
+
+  /* EDITOR */
+  .edit-btn {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 8px;
+    font-size: 11px;
+    color: var(--accent2);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  /* MODAL EDITOR */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.8);
+    z-index: 100;
+    align-items: flex-end;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal {
+    background: var(--surface2);
+    border-radius: 16px 16px 0 0;
+    padding: 20px 16px 40px;
+    width: 100%;
+    max-height: 85vh;
+    overflow-y: auto;
+  }
+  .modal h3 { font-size: 15px; margin-bottom: 4px; }
+  .modal p { font-size: 12px; color: var(--muted); margin-bottom: 14px; }
+  .modal textarea {
+    width: 100%;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    font-size: 13px;
+    padding: 10px;
+    min-height: 120px;
+    resize: vertical;
+    font-family: inherit;
+    line-height: 1.5;
+  }
+  .modal-btns { display: flex; gap: 8px; margin-top: 10px; }
+  .btn-save {
+    flex: 1;
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 11px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .btn-cancel {
+    background: var(--surface);
+    color: var(--muted);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 11px 16px;
+    font-size: 13px;
+    cursor: pointer;
+  }
+
+  /* NOW indicator pulse */
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+  .pulse { animation: pulse 2s infinite; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-top">
+    <h1>Minha Rotina</h1>
+    <div class="clock" id="clock">--:--</div>
+  </div>
+  <div class="banner">
+    <div class="banner-card now" id="banner-now">
+      <div class="banner-label">▶ Agora</div>
+      <div class="banner-time" id="bn-time">--:-- – --:--</div>
+      <div class="banner-task" id="bn-task">—</div>
+    </div>
+    <div class="banner-card next" id="banner-next">
+      <div class="banner-label">⏭ Próxima</div>
+      <div class="banner-time" id="bx-time">--:--</div>
+      <div class="banner-task" id="bx-task">—</div>
+    </div>
+  </div>
+  <div class="tabs" id="tabs"></div>
+</header>
+
+<div class="list" id="list"></div>
+
+<!-- Modal editor -->
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <h3>Editar detalhes</h3>
+    <p id="modal-title-label">—</p>
+    <textarea id="modal-textarea" placeholder="Digite os detalhes, um por linha..."></textarea>
+    <div class="modal-btns">
+      <button class="btn-cancel" onclick="closeModal()">Cancelar</button>
+      <button class="btn-save" onclick="saveModal()">Salvar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ─── DADOS BASE ────────────────────────────────────────────────────────────
+const BASE = {
+  "Seg": [
+    ["05:00","05:30","Café da manhã",["☕ Preparar e tomar o café","🍽️ Dieta: 100g banana, 50g aveia, 100g farinha de milho, 300ml leite"]],
+    ["05:30","06:00","Oração — Santo Terço",["🙏 Rezar o Santo Terço — 🟡 Mistérios Gozosos"]],
+    ["06:00","07:00","Correr",["🏃 Corrida de 1h"]],
+    ["07:00","07:15","Transição",["🔄 Preparar para o estudo"]],
+    ["07:15","08:15","Estudo — Mercado Financeiro",[
+      "📺 Primo Rico (Reels/Instagram)",
+      "📺 Economista Sincero (Reels/Instagram)",
+      "📺 Bruno Pirini (Reels/Instagram)",
+      "📝 Anotar: o que aprendi, como conecta com consórcio, insight pra postar"
+    ]],
+    ["08:15","08:45","Buffer / Imprevisto",["⏳ Resolver pendências rápidas ou imprevistos (ex: ida à loja)"]],
+    ["08:45","09:00","Livre",["😌 Descanso ou atividade pessoal"]],
+    ["09:00","09:15","doTERRA — WhatsApp [20]",["📱 Abrir WhatsApp doTERRA","💬 Responder 20 mensagens","🎥 Lembrete: gravar um pouco do dia a dia"]],
+    ["09:15","09:30","Consórcio — Instagram [15]",["📸 Abrir Instagram Consórcio","💬 Responder 15 DMs/comentários"]],
+    ["09:30","10:30","Atendimentos + Tráfego Pago",[
+      "📱 WhatsApp doTERRA — responder",
+      "📱 WhatsApp Consórcio — responder",
+      "📸 Instagram doTERRA — DMs e comentários",
+      "📸 Instagram Consórcio — DMs e comentários",
+      "🏠 OLX — mensagens e anúncios",
+      "📘 Facebook — mensagens e comentários",
+      "💼 LinkedIn — conexões e mensagens",
+      "💰 Verificar campanhas de tráfego pago",
+      "🍽️ LANCHE (dieta): 1 pão, 20g requeijão, 2 ovos"
+    ]],
+    ["10:30","10:45","doTERRA — WhatsApp [20]",["📱 Responder 20 mensagens doTERRA"]],
+    ["10:45","11:00","Consórcio — WhatsApp [15]",["📱 Responder 15 mensagens Consórcio"]],
+    ["11:00","11:30","Consórcio — Ligações [5]",["📞 Ligar para 5 leads Consórcio","📝 Registrar resultado de cada ligação"]],
+    ["11:30","12:00","Atendimento + Remarketing",[
+      "📱 WhatsApp doTERRA","📱 WhatsApp Consórcio",
+      "📸 Instagram doTERRA","📸 Instagram Consórcio",
+      "🏠 OLX","📘 Facebook","💼 LinkedIn",
+      "🔄 Remarketing: contatar leads antigos"
+    ]],
+    ["12:00","12:30","Almoço",["🍽️ Almoçar com calma","😌 Descansar da tela","🍽️ Dieta: 140g frango, 200g arroz, 1 fruta","🎥 Lembrete: gravar um pouco do dia a dia"]],
+    ["12:30","13:00","Atendimento",[
+      "📱 WhatsApp doTERRA","📱 WhatsApp Consórcio",
+      "📸 Instagram doTERRA","📸 Instagram Consórcio",
+      "🏠 OLX","📘 Facebook","💼 LinkedIn"
+    ]],
+    ["13:00","13:20","doTERRA — WhatsApp [20]",["📱 Responder 20 mensagens doTERRA"]],
+    ["13:20","13:40","Consórcio — Facebook [10]",["📘 Responder 10 comentários/mensagens"]],
+    ["13:40","15:00","Atendimentos",[
+      "📱 WhatsApp doTERRA","📱 WhatsApp Consórcio",
+      "📸 Instagram doTERRA","📸 Instagram Consórcio",
+      "🏠 OLX","📘 Facebook","💼 LinkedIn",
+      "📞 Fazer 5 ligações de follow-up (20min)"
+    ]],
+    ["15:00","15:40","doTERRA — WhatsApp [20]",[
+      "📱 Responder 20 mensagens doTERRA",
+      "🍽️ Dieta (Café da tarde): 140g frango, 200g arroz, 1 fruta",
+      "🎥 Lembrete: gravar um pouco do dia a dia"
+    ]],
+    ["15:40","16:00","doTERRA — Instagram [20]",["📸 Responder 20 DMs/comentários doTERRA"]],
+    ["16:00","16:30","Consórcio — LinkedIn [5]",["💼 Responder mensagens e adicionar 5 conexões"]],
+    ["16:30","18:00","Fechar atendimentos pendentes",[
+      "📱 WhatsApp doTERRA — varredura final",
+      "📱 WhatsApp Consórcio — varredura final",
+      "📸 Instagram doTERRA — varredura final",
+      "📸 Instagram Consórcio — varredura final",
+      "🏠 OLX — varredura final",
+      "📘 Facebook — varredura final",
+      "💼 LinkedIn — varredura final",
+      "✅ Garantir que nenhuma mensagem ficou sem resposta"
+    ]],
+    ["18:00","20:00","Curso",["📚 Assistir aulas do curso","📝 Anotar pontos importantes","🎥 Lembrete: gravar um pouco do dia a dia"]],
+    ["20:00","20:45","Follow-up",["💬 Enviar follow-up para leads quentes","📋 Verificar lista de contatos do dia"]],
+    ["20:45","21:00","Banho",["🚿 Banho"]],
+    ["21:00","21:15","Jantar",["🍽️ Jantar","🍽️ Dieta: 140g frango, 200g arroz, 1 fruta"]],
+    ["21:15","21:50","Editar + Postar conteúdo",[
+      "✂️ Editar o vídeo/post do dia",
+      "📤 Postar nas redes sociais",
+      "📝 Escrever legenda com CTA"
+    ]],
+    ["21:50","22:05","Planejamento do próximo dia",[
+      "📋 Listar as 3 prioridades de amanhã",
+      "📅 Revisar agenda",
+      "📝 Anotar pendências"
+    ]],
+    ["22:05","22:15","Oração — Completas",["🙏 Rezar as Completas"]],
+    ["22:15","22:35","Transição / buffer",["🔄 Preparar para dormir"]],
+    ["22:35","23:05","Rotina noturna",["🪥 Higiene pessoal","🌙 Preparar para dormir"]],
+    ["23:05","23:35","Leitura",["📖 Leitura de livro físico"]]
+  ],
+  "Ter": [
+    ["05:00","05:30","Café da manhã",["☕ Preparar e tomar o café","🍽️ Dieta: 100g banana, 50g aveia, 100g farinha de milho, 300ml leite"]],
+    ["05:30","06:00","Oração — Santo Terço",["🙏 Rezar o Santo Terço — 🔴 Mistérios Dolorosos"]],
+    ["06:00","06:30","Correr",["🏃 Corrida de 30min"]],
+    ["06:30","06:45","Transição",["🔄 Preparar o ambiente"]],
+    ["06:45","08:15","Passarinhos + Casa",["🐦 Passarinhos","🗑️ Lixo","💩 Cocô do cachorro","🍖 Comida do cachorro","➕ Extras"]],
+    ["08:15","08:45","Estudo",["📝 Estudo do dia","📝 Anotar principais pontos"]],
+    ["08:45","09:00","Buffer / Imprevisto",["⏳ Resolver pendências rápidas ou imprevistos (ex: ida à loja)"]],
+    ["09:00","09:15","doTERRA — WhatsApp [20]",["📱 Responder 20 mensagens doTERRA","🎥 Lembrete: gravar um pouco do dia a dia"]],
+    ["09:15","09:30","Consórcio — Instagram [15]",[
+      "📸 Responder 15 DMs/comentários",
+      "👀 Verificar interações"
+    ]],
+    ["09:30","10:30","Atendimentos + Tráfego Pago",[
+      "📱 WhatsApp doTERRA",
+      "📱 WhatsApp Consórcio",
+      "📸 Instagram doTERRA",
+      "📸 Instagram Consórcio",
+      "🏠 OLX",
+      "📘 Facebook",
+      "💼 LinkedIn",
+      "💰 Verificar tráfego pago",
+      "🍽️ LANCHE (dieta): 1 pão, 20g requeijão, 2 ovos"
+    ]],
+    ["10:30","10:45","doTERRA — WhatsApp [20]",["📱 Responder 20 mensagens doTERRA"]],
+    ["10:45","11:00","Consórcio — WhatsApp [15]",["📱 Responder 15 mensagens Consórcio"]],
+    ["11:00","11:30","Consórcio — Ligações [5]",["📞 Ligar para 5 leads Consórcio","📝 Registrar resultados"]],
+    ["11:30","12:00","Atendimento + Remarketing",[
+      "📱 WhatsApp doTERRA","📱 WhatsApp Consórcio",
+      "📸 Instagram doTERRA","📸 Instagram Consórcio",
+      "🏠 OLX","📘 Facebook","💼 LinkedIn",
+      "🔄 Remarketing: contatar leads antigos"
+    ]],
+    ["12:00","12:30","Almoço",["🍽️ Almoçar com calma","😌 Descansar da tela","🍽️ Dieta: 140g frango, 200g arroz, 1 fruta","🎥 Lembrete: gravar um pouco do dia a dia"]],
+    ["12:30","13:00","Atendimento",[
+      "📱 WhatsApp doTERRA","📱 WhatsApp Consórcio",
+      "📸 Instagram doTERRA","📸 Instagram Consórcio",
+      "🏠 OLX","📘 Facebook","💼 LinkedIn"
+    ]],
+    ["13:00","13:20","doTERRA — WhatsApp [20]",["📱 Responder 20 mensagens doTERRA"]],
+    ["13:20","13:40","Consórcio — Facebook [10]",["📘 Responder 10 comentários/mensagens"]],
+    ["13:40","15:00","Atendimentos",[
+      "📱 WhatsApp doTERRA","📱 WhatsApp Consórcio",
+      "📸 Instagram doTERRA","📸 Instagram Consórcio",
+      "🏠 OLX","📘 Facebook","💼 LinkedIn",
+      "📞 Fazer 5 ligações de follow-up (20min)"
+    ]],
+    ["15:00","15:40","doTERRA — WhatsApp [20]",[
+      "📱 Responder 20 mensagens doTERRA",
+      "🍽️ Dieta (Café da tarde): 140g frango, 200g arroz, 1 fruta",
+      "🎥 Lembrete: gravar um pouco do dia a dia"
+    ]],
+    ["15:40","16:00","doTERRA — Instagram [20]",["📸 Responder 20 DMs/comentários doTERRA"]],
+    ["16:00","16:30","Consórcio — LinkedIn [5]",["💼 Responder mensagens e adicionar 5 conexões"]],
+    ["16:30","18:00","Fechar atendimentos pendentes",[
+      "📱 WhatsApp doTERRA — varredura final","📱 WhatsApp Consórcio — varredura final",
+      "📸 Instagram doTERRA","📸 Instagram Consórcio",
+      "🏠 OLX","📘 Facebook","💼 LinkedIn",
+      "✅ Garantir que nenhuma mensagem ficou sem resposta"
+    ]],
+    ["18:00","18:45","Follow-up",["💬 Enviar follow-up para leads quentes","🎥 Lembrete: gravar um pouco do dia a dia"]],
+    ["18:45","19:00","Banho",["🚿 Banho"]],
+    ["19:00","19:45","Jantar",["🍽️ Jantar","🍽️ Dieta: 140g frango, 200g arroz, 1 fruta"]],
+    ["19:45","20:30","Planejamento do próximo dia",["📋 Listar prioridades","📅 Revisar agenda","📝 Anotar pendências"]],
+    ["20:30","20:40","Oração — Completas",["🙏 Rezar as Completas"]],
+    ["20:40","21:00","Transição / buffer",["🔄 Preparar para dormir"]],
+    ["21:00","21:30","Rotina noturna",["🪥 Higiene pessoal"]],
+    ["21:30","22:00","Leitura",["📖 Leitura de livro físico"]]
+  ],
+  "Qua": [
+    ["05:00","05:30","Café da manhã",["☕ Preparar e tomar o café","🍽️ Dieta: 100g banana, 50g aveia, 100g farinha de milho, 300ml leite"]],
+    ["05:30","06:00","Oração — Santo Terço",["🙏 Rezar o Santo Terço — 🟢 Mistérios Gloriosos"]],
+    ["06:00","07:00","Correr",["🏃 Corrida de 1h"]],
+    ["07:00","07:15","Transição",["🔄 Preparar o ambiente"]],
+    ["07:15","07:30","Passarinhos + Casa",["🐦 Passarinhos","🗑️ Lixo","💩 Cocô do cachorro","🍖 Comida do cachorro","➕ Extras"]],
+    ["07:30","08:30","Estudo — Consórcio Imóveis",["📚 Material próprio sobre consórcio de imóveis","📝 Anotar pontos importantes"]],
+    ["08:30","09:00","Buffer / Imprevisto",["⏳ Resolver pendências rápidas ou imprevistos (ex: ida à loja)"]],
+    ["09:00","09:15","doTERRA — WhatsApp [20]",["📱 Responder 20 mensagens doTERRA","🎥 Lembrete: gravar um pouco do dia a dia"]],
+    ["09:15","09:30","Consórcio — Instagram [15]",["📸 Responder 15 DMs/comentários"]],
+    ["09:30","10:30","Atendimentos + Tráfego Pago",[
+      "📱 WhatsApp doTERRA","📱 WhatsApp Consórcio",
+      "📸 Instagram doTERRA","📸 Instagram Consórcio",
+      "🏠 OLX","📘 Facebook","💼 LinkedIn",
+      "💰 Verificar tráfego pago",
+      "🍽️ LANCHE (dieta): 1 pão, 20g requeijão, 2 ovos"
+    ]],
+    ["10:30","10:45","doTERRA — WhatsApp [20]",["📱 Responder 20 mensagens doTERRA"]],
+    ["10:45","11:00","Consórcio — WhatsApp [15]",["📱 Responder 15 mensagens Consórcio"]],
+    ["11:00","11:30","Consórcio — Ligações [5]",["📞 Ligar para 5 leads Consórcio","📝 Registrar resultados"]],
+    ["11:30","12:00","Atendimento + Remarketing",[
+      "📱 WhatsApp doTERRA","📱 WhatsApp Consórcio",
+      "📸 Instagram doTERRA","📸 Instagram Consórcio",
+      "🏠 OLX","📘 Facebook","💼 LinkedIn",
+      "🔄 Remarketing: contatar leads antigos"
+    ]],
+    ["12:00","12:30","Almoço",["🍽️ Almoçar com calma","🍽️ Dieta: 140g frango, 200g arroz, 1 fruta","🎥 Lembrete: gravar um pouco do dia a dia"]],
+    ["12:30","13:00","Atendimento",[
+      "📱 WhatsApp doTERRA","📱 WhatsApp Consórcio",
+      "📸 Instagram doTERRA","📸 Instagram Consórcio",
+      "🏠 OLX","📘 Facebook","💼 LinkedIn"
+    ]],
+    ["13:00","13:20","doTERRA — WhatsApp [20]",["📱 Responder 20 mensagens doTERRA"]],
+    ["13:20","13:40","Consórcio — Facebook [10]",["📘 Responder 10 comentários/mensagens"]],
+    ["13:40","15:00","Atendimentos",[
+      "📱 WhatsApp doTERRA","📱 WhatsApp Consórcio",
+      "📸 Instagram doTERRA","📸 Instagram Consórcio",
+      "🏠 OLX","📘 Facebook","💼 LinkedIn",
+      "📞 Fazer 5 ligações de follow-up (20min)"
+    ]],
+    ["15:00","15:40","doTERRA — WhatsApp [20]",[
+      "📱 Responder 20 mensagens doTERRA",
+      "🍽️ Dieta (Café da tarde): 140g frango, 200g arroz, 1 fruta",
+      "🎥 Lembrete: gravar um pouco do dia a dia"
+    ]],
+    ["15:40","16:00","doTERRA — Instagram [20]",["📸 Responder 20 DMs/comentários doTERRA"]],
+    ["16:00","16:30","Consórcio — LinkedIn [5]",["💼 Responder mensagens e adicionar 5 conexões"]],
+    ["16:30","18:00","Fechar atendimentos pendentes",[
+      "📱 WhatsApp doTERRA","📱 WhatsApp Consórcio",
+      "📸 Instagram doTERRA","📸 Instagram Consórcio",
+      "🏠 OLX","📘 Facebook","💼 LinkedIn",
+      "✅ Nenhuma mensagem sem resposta"
+    ]],
+    ["18:00","18:45","Follow-up",["💬 Enviar follow-up para leads quentes","🎥 Lembrete: gravar um pouco do dia a dia"]],
+    ["18:45","19:20","Editar + Postar conteúdo",[
+      "✂️ Editar o vídeo/post do dia",
+      "📤 Postar nas redes sociais",
+      "📝 Escrever legenda com CTA"
+    ]],
+    ["19:20","19:35","Banho",["🚿 Banho"]],
+    ["19:35","20:20","Jantar",["🍽️ Jantar","🍽️ Dieta: 140g frango, 200g arroz, 1 fruta"]],
+    ["20:20","21:05","Planejamento do próximo dia",["📋 Listar prioridades","📅 Revisar agenda","📝 Anotar pendências"]],
+    ["21:05","21:15","Oração — Completas",["🙏 Rezar as Completas"]],
+    ["21:15","21:35","Transição / buffer",["🔄 Preparar para dormir"]],
+    ["21:35","22:05","Rotina noturna",["🪥 Higiene pessoal"]],
+    ["22:05","22:35","Leitura",["📖 Leitura de livro físico"]]
+  ],
+  "Qui": [
+    ["05:00","05:30","Café da manhã",["☕ Preparar e tomar o café","🍽️ Dieta: 100g banana, 50g aveia, 100g farinha de milho, 300ml leite"]],
+    ["05:30","06:00","Oração — Santo Terço",["🙏 Rezar o Santo Terço — 🔵 Mistérios Luminosos"]],
+    ["06:00","06:30","Correr",["🏃 Corrida de 30min"]],
+    ["06:30","06:45","Transição",["🔄 Preparar ambiente"]],
+    ["06:45","07:00","Passarinhos + Casa",["🐦 Alimentar passarinhos","🏠 Arrumar a casa rapidamente"]],
+    ["07:00","08:15","Missa",["⛪ Ir à missa","🙏 Participar com atenção"]],
+    ["08:15","09:00","Estudo — Mercado Financeiro",[
+      "📺 Primo Rico (Reels/Instagram)",
+      "📺 Economista Sincero (Reels/Instagram)",
+      "📺 Bruno Pirini (Reels/Instagram)",
+      "📝 Anotar: o que aprendi, como conecta com consórcio, insight pra postar"
+    ]],
+    ["09:00","09:15","doTERRA — WhatsApp [20]",["📱 Responder 20 mensagens doTERRA","🎥 Lembrete: gravar um pouco do dia a dia"]],
+    ["09:15","09:30","Consórcio — Instagram [15]",["📸 Responder 15 DMs/comentários"]],
+    ["09:30","10:30","Atendimentos + Tráfego Pago",[
+      "📱 WhatsApp doTERRA","📱 WhatsApp Consórcio",
+      "📸 Instagram doTERRA","📸 Instagram Consórcio",
+      "🏠 OLX","📘 Facebook","💼 LinkedIn",
+      "💰 Verificar tráfego pago",
+      "🍽️ LANCHE (dieta): 1 pão, 20g requeijão, 2 ovos"
+    ]],
+    ["10:30","10:45","doTERRA — WhatsApp [20]",["📱 Responder 20 mensagens doTERRA"]],
+    ["10:45","11:00","Consórcio — WhatsApp [15]",["📱 Responder 15 mensagens Consórcio"]],
+    ["11:00","11:30","Consórcio — Ligações [5]",["📞 Ligar para 5 leads Consórcio","📝 Registrar resultados"]],
+    ["11:30","12:00","Atendimento + Remarketing",[
+      "📱 WhatsApp doTERRA","📱 WhatsApp Consórcio",
+      "📸 Instagram doTERRA","📸 Instagram Consórcio",
+      "🏠 OLX","📘 Facebook","💼 LinkedIn",
+      "🔄 Remarketing: contatar leads antigos"
+    ]],
+    ["12:00","12:30","Almoço",["🍽️ Almoçar com calma","🍽️ Dieta: 140g frango, 200g arroz, 1 fruta","🎥 Lembrete: gravar um pouco do dia a dia"]],
+    ["12:30","13:00","Atendimento",[
+      "📱 WhatsApp doTERRA","📱 WhatsApp Consórcio",
+      "📸 Instagram doTERRA","📸 Instagram Consórcio",
+      "🏠 OLX","📘 Facebook","💼 LinkedIn"
+    ]],
+    ["13:00","13:20","doTERRA — WhatsApp [20]",["📱 Responder 20 mensagens doTERRA"]],
+    ["13:20","13:40","Consórcio — Facebook [10]",["📘 Responder 10 comentários/mensagens"]],
+    ["13:40","15:00","Atendimentos",[
+      "📱 WhatsApp doTERRA","📱 WhatsApp Consórcio",
+      "📸 Instagram doTERRA","📸 Instagram Consórcio",
+      "🏠 OLX","📘 Facebook","💼 LinkedIn",
+      "📞 Fazer 5 ligações de follow-up (20min)"
+    ]],
+    ["15:00","15:40","doTERRA — WhatsApp [20]",[
+      "📱 Responder 20 mensagens doTERRA",
+      "🍽️ Dieta (Café da tarde): 140g frango, 200g arroz, 1 fruta",
+      "🎥 Lembrete: gravar um pouco do dia a dia"
+    ]],
+    ["15:40","16:00","doTERRA — Instagram [20]",["📸 Responder 20 DMs/comentários doTERRA"]],
+    ["16:00","16:30","Consórcio — LinkedIn [5]",["💼 Responder mensagens e adicionar 5 conexões"]],
+    ["16:30","18:00","Fechar atendimentos pendentes",[
+      "📱 WhatsApp doTERRA","📱 WhatsApp Consórcio",
+      "📸 Instagram doTERRA","📸 Instagram Consórcio",
+      "🏠 OLX","📘 Facebook","💼 LinkedIn",
+      "✅ Nenhuma mensagem sem resposta"
+    ]],
+    ["18:00","18:45","Follow-up",["💬 Enviar follow-up para leads quentes","🎥 Lembrete: gravar um pouco do dia a dia"]],
+    ["18:45","19:00","Banho",["🚿 Banho"]],
+    ["19:00","19:45","Jantar",["🍽️ Jantar","🍽️ Dieta: 140g frango, 200g arroz, 1 fruta"]],
+    ["19:45","20:30","Planejamento do próximo dia",["📋 Listar prioridades","📅 Revisar agenda","📝 Anotar pendências"]],
+    ["20:30","20:40","Oração — Completas",["🙏 Rezar as Completas"]],
+    ["20:40","21:00","Transição / buffer",["🔄 Preparar para dormir"]],
+    ["21:00","21:30","Rotina noturna",["🪥 Higiene pessoal"]],
+    ["21:30","22:00","Leitura",["📖 Leitura de livro físico"]]
+  ],
+  "Sex": [
+    ["05:00","05:30","Café da manhã",["☕ Preparar e tomar o café","🍽️ Dieta: 100g banana, 50g aveia, 100g farinha de milho, 300ml leite"]],
+    ["05:30","06:00","Oração — Santo Terço",["🙏 Rezar o Santo Terço — 🔴 Mistérios Dolorosos"]],
+    ["06:00","07:00","Correr",["🏃 Corrida de 1h"]],
+    ["07:00","07:15","Transição",["🔄 Preparar para o estudo"]],
+    ["07:15","08:15","Estudo — Consórcio Agrícola",["📚 Material próprio sobre consórcio agrícola","📝 Anotar pontos importantes"]],
+    ["08:15","08:35","Buffer / Imprevisto",["⏳ Resolver pendências rápidas ou imprevistos (ex: ida à loja)"]],
+    ["08:35","09:00","Livre",["😌 Descanso ou atividade pessoal"]],
+    ["09:00","09:15","doTERRA — WhatsApp [20]",["📱 Responder 20 mensagens doTERRA","🎥 Lembrete: gravar um pouco do dia a dia"]],
+    ["09:15","09:30","Consórcio — Instagram [15]",["📸 Responder 15 DMs/comentários"]],
+    ["09:30","10:30","Atendimentos + Tráfego Pago",[
+      "📱 WhatsApp doTERRA","📱 WhatsApp Consórcio",
+      "📸 Instagram doTERRA","📸 Instagram Consórcio",
+      "🏠 OLX","📘 Facebook","💼 LinkedIn",
+      "💰 Verificar tráfego pago",
+      "🍽️ LANCHE (dieta): 1 pão, 20g requeijão, 2 ovos"
+    ]],
+    ["10:30","10:45","doTERRA — WhatsApp [20]",["📱 Responder 20 mensagens doTERRA"]],
+    ["10:45","11:00","Consórcio — WhatsApp [15]",["📱 Responder 15 mensagens Consórcio"]],
+    ["11:00","11:30","Consórcio — Ligações [5]",["📞 Ligar para 5 leads Consórcio","📝 Registrar resultados"]],
+    ["11:30","12:00","Atendimento + Remarketing",[
+      "📱 WhatsApp doTERRA","📱 WhatsApp Consórcio",
+      "📸 Instagram doTERRA","📸 Instagram Consórcio",
+      "🏠 OLX","📘 Facebook","💼 LinkedIn",
+      "🔄 Remarketing: contatar leads antigos"
+    ]],
+    ["12:00","12:30","Almoço",["🍽️ Almoçar com calma","🍽️ Dieta: 140g frango, 200g arroz, 1 fruta","🎥 Lembrete: gravar um pouco do dia a dia"]],
+    ["12:30","13:00","Atendimento",[
+      "📱 WhatsApp doTERRA","📱 WhatsApp Consórcio",
+      "📸 Instagram doTERRA","📸 Instagram Consórcio",
+      "🏠 OLX","📘 Facebook","💼 LinkedIn"
+    ]],
+    ["13:00","13:20","doTERRA — WhatsApp [20]",["📱 Responder 20 mensagens doTERRA"]],
+    ["13:20","13:40","Consórcio — Facebook [10]",["📘 Responder 10 comentários/mensagens"]],
+    ["13:40","15:00","Atendimentos",[
+      "📱 WhatsApp doTERRA","📱 WhatsApp Consórcio",
+      "📸 Instagram doTERRA","📸 Instagram Consórcio",
+      "🏠 OLX","📘 Facebook","💼 LinkedIn",
+      "📞 Fazer 5 ligações de follow-up (20min)"
+    ]],
+    ["15:00","15:40","doTERRA — WhatsApp [20]",[
+      "📱 Responder 20 mensagens doTERRA",
+      "🍽️ Dieta (Café da tarde): 140g frango, 200g arroz, 1 fruta",
+      "🎥 Lembrete: gravar um pouco do dia a dia"
+    ]],
+    ["15:40","16:00","doTERRA — Instagram [20]",["📸 Responder 20 DMs/comentários doTERRA"]],
+    ["16:00","16:30","Consórcio — LinkedIn [5]",["💼 Responder mensagens e adicionar 5 conexões"]],
+    ["16:30","18:00","Fechar atendimentos pendentes",[
+      "📱 WhatsApp doTERRA","📱 WhatsApp Consórcio",
+      "📸 Instagram doTERRA","📸 Instagram Consórcio",
+      "🏠 OLX","📘 Facebook","💼 LinkedIn",
+      "✅ Nenhuma mensagem sem resposta"
+    ]],
+    ["18:00","18:45","Follow-up",["💬 Enviar follow-up para leads quentes","🎥 Lembrete: gravar um pouco do dia a dia"]],
+    ["18:45","19:05","Editar + Postar conteúdo",["✂️ Editar o vídeo/post do dia","📤 Postar nas redes sociais","📝 Escrever legenda com CTA"]],
+    ["19:05","19:20","Banho",["🚿 Banho"]],
+    ["19:20","20:05","Jantar",["🍽️ Jantar","🍽️ Dieta: 140g frango, 200g arroz, 1 fruta"]],
+    ["20:05","20:50","Planejamento do próximo dia",["📋 Listar prioridades","📅 Revisar agenda","📝 Anotar pendências"]],
+    ["20:50","21:00","Oração — Completas",["🙏 Rezar as Completas"]],
+    ["21:00","21:20","Transição / buffer",["🔄 Preparar para dormir"]],
+    ["21:20","21:50","Rotina noturna",["🪥 Higiene pessoal"]],
+    ["21:50","22:20","Leitura",["📖 Leitura de livro físico"]]
+  ],
+  "Sáb": [
+    ["05:00","05:30","Café da manhã",["☕ Preparar e tomar o café","🍽️ Dieta: 100g banana, 50g aveia, 100g farinha de milho, 300ml leite"]],
+    ["05:30","06:00","Oração — Santo Terço",["🙏 Rezar o Santo Terço — 🟡 Mistérios Gozosos"]],
+    ["06:00","07:00","Correr",["🏃 Corrida de 1h"]],
+    ["07:00","07:15","Transição",["🔄 Preparar o ambiente"]],
+    ["07:15","07:30","Passarinhos + Casa",["🐦 Passarinhos","🗑️ Lixo","💩 Cocô do cachorro","🍖 Comida do cachorro","➕ Extras"]],
+    ["07:30","07:50","Banho",["🚿 Banho"]],
+    ["07:50","09:20","Estudo — Mercado Financeiro",[
+      "📺 Primo Rico (Reels/Instagram)",
+      "📺 Economista Sincero (Reels/Instagram)",
+      "📺 Bruno Pirini (Reels/Instagram)",
+      "📝 Anotar pontos importantes",
+      "🍽️ LANCHE (dieta): 1 pão, 20g requeijão, 2 ovos"
+    ]],
+    ["09:20","10:50","Ideias",["💡 Desenvolver ideias de negócio","📝 Anotar e planejar"]],
+    ["10:50","12:20","Prospecção — Empresários",[
+      "💼 LinkedIn — contatar empresários",
+      "📱 WhatsApp — follow-up com empresários",
+      "📝 Registrar contatos feitos"
+    ]],
+    ["12:20","12:40","Buffer / Transição",["⏳ Pendências rápidas ou descanso"]],
+    ["12:40","13:10","Almoço",["🍽️ Almoçar","🍽️ Dieta: 140g frango, 200g arroz, 1 fruta"]],
+    ["13:10","15:30","Família / Casa",["👨‍👩‍👧 Tempo com a família","🏠 Cuidados da casa"]],
+    ["15:30","16:00","Remarketing",["🔄 Remarketing: contatar leads antigos"]],
+    ["16:00","16:45","Follow-up",["💬 Enviar follow-up para leads quentes"]],
+    ["16:45","17:30","Jantar",["🍽️ Jantar","🍽️ Dieta: 140g frango, 200g arroz, 1 fruta"]],
+    ["17:30","18:15","Planejamento do próximo dia",["📋 Listar prioridades","📅 Revisar agenda","📝 Anotar pendências"]],
+    ["18:15","18:25","Oração — Completas",["🙏 Rezar as Completas"]],
+    ["18:25","18:45","Transição / buffer",["🔄 Preparar para dormir"]],
+    ["18:45","19:15","Rotina noturna",["🪥 Higiene pessoal"]],
+    ["19:15","19:45","Leitura",["📖 Leitura de livro físico"]]
+  ],
+  "Dom": [
+    ["06:00","07:00","Correr",["🏃 Corrida de 1h"]],
+    ["07:00","07:30","Acordar / Preparar",["☀️ Acordar com calma","☕ Café tranquilo","🍽️ Dieta: 100g banana, 50g aveia, 100g farinha de milho, 300ml leite"]],
+    ["07:30","08:00","Oração — Santo Terço",["🙏 Rezar o Santo Terço — 🟢 Mistérios Gloriosos"]],
+    ["08:00","08:30","Planejamento da semana",[
+      "📅 Revisar metas da semana",
+      "📋 Montar prioridades de cada dia",
+      "📝 Anotar compromissos fixos"
+    ]],
+    ["08:30","09:30","Estudo — Mercado Financeiro",[
+      "📺 Primo Rico (Reels/Instagram)",
+      "📺 Economista Sincero (Reels/Instagram)",
+      "📺 Bruno Pirini (Reels/Instagram)",
+      "📝 Anotar pontos importantes",
+      "🍽️ LANCHE (dieta): 1 pão, 20g requeijão, 2 ovos"
+    ]],
+    ["09:30","10:30","Extras pendentes",["✅ Resolver pendências da semana anterior"]],
+    ["10:30","12:30","Descanso / Família",["👨‍👩‍👧 Tempo com a família","😌 Descanso"]],
+    ["12:30","13:00","Almoço",["🍽️ Almoçar","🍽️ Dieta: 140g frango, 200g arroz, 1 fruta"]],
+    ["13:00","15:00","Descanso / Família",["👨‍👩‍👧 Tempo com a família","😌 Descanso"]],
+    ["15:00","15:20","Café da tarde",["🍽️ Dieta: 140g frango, 200g arroz, 1 fruta"]],
+    ["15:20","16:30","Descanso / Família",["👨‍👩‍👧 Tempo com a família","😌 Descanso"]],
+    ["16:30","17:00","Remarketing",["🔄 Remarketing: contatar leads antigos"]],
+    ["17:00","17:45","Follow-up",["💬 Enviar follow-up para leads quentes"]],
+    ["17:45","18:30","Jantar",["🍽️ Jantar","🍽️ Dieta: 140g frango, 200g arroz, 1 fruta"]],
+    ["18:30","19:00","Planejamento do próximo dia",["📋 Listar prioridades","📅 Revisar agenda","📝 Anotar pendências"]],
+    ["19:00","19:10","Oração — Completas",["🙏 Rezar as Completas"]],
+    ["19:10","19:30","Transição / buffer",["🔄 Preparar para dormir"]],
+    ["19:30","20:00","Rotina noturna",["🪥 Higiene pessoal"]],
+    ["20:00","20:30","Leitura",["📖 Leitura de livro físico"]]
+  ]
+};
+
+
+const ORDER = ["Seg","Ter","Qua","Qui","Sex","Sáb","Dom"];
+
+// ─── STORAGE ───────────────────────────────────────────────────────────────
+function loadData() {
+  try {
+    const s = localStorage.getItem("rotina_v3");
+    return s ? JSON.parse(s) : JSON.parse(JSON.stringify(BASE));
+  } catch(e) { return JSON.parse(JSON.stringify(BASE)); }
+}
+function saveData() {
+  localStorage.setItem("rotina_v3", JSON.stringify(DATA));
+}
+let DATA = loadData();
+
+// ─── UTILS ─────────────────────────────────────────────────────────────────
+function toMin(t) { const [h,m] = t.split(":").map(Number); return h*60+m; }
+function pad(n) { return String(n).padStart(2,"0"); }
+function nowMin() { const n=new Date(); return n.getHours()*60+n.getMinutes(); }
+function todayKey() { return ORDER[(new Date().getDay()+6)%7]; }
+
+// ─── CLOCK ─────────────────────────────────────────────────────────────────
+function updateClock() {
+  const n = new Date();
+  document.getElementById("clock").textContent = pad(n.getHours())+":"+pad(n.getMinutes());
+}
+
+// ─── BANNER ────────────────────────────────────────────────────────────────
+function updateBanner() {
+  const key = todayKey();
+  const blocks = DATA[key] || [];
+  const nm = nowMin();
+  let cur = null, nxt = null;
+  for (const b of blocks) {
+    const s = toMin(b[0]), e = toMin(b[1]);
+    if (nm >= s && nm < e && !cur) cur = b;
+    else if (nm < s && !nxt) nxt = b;
+  }
+  document.getElementById("bn-time").textContent = cur ? cur[0]+" – "+cur[1] : "—";
+  document.getElementById("bn-task").textContent = cur ? cur[2] : "Fora do horário";
+  document.getElementById("bx-time").textContent = nxt ? "às "+nxt[0] : "—";
+  document.getElementById("bx-task").textContent = nxt ? nxt[2] : "Fim do dia";
+}
+
+// ─── STATE ─────────────────────────────────────────────────────────────────
+let current = todayKey();
+
+// ─── RENDER ────────────────────────────────────────────────────────────────
+function render() {
+  // tabs
+  const tabs = document.getElementById("tabs");
+  tabs.innerHTML = "";
+  const today = todayKey();
+  ORDER.forEach(d => {
+    const b = document.createElement("button");
+    b.className = "tab" + (d===today?" today":"") + (d===current?" active":"");
+    b.textContent = d;
+    b.onclick = () => { current = d; render(); };
+    tabs.appendChild(b);
+  });
+
+  // list
+  const list = document.getElementById("list");
+  list.innerHTML = "";
+  const nm = nowMin();
+  const blocks = DATA[current] || [];
+  let foundNext = false;
+
+  blocks.forEach((block, idx) => {
+    const [start, end, title, subs] = block;
+    const s = toMin(start), e = toMin(end);
+    const isNow = current === todayKey() && nm >= s && nm < e;
+    const isNext = current === todayKey() && !foundNext && nm < s;
+    if (isNext) foundNext = true;
+
+    const div = document.createElement("div");
+    div.className = "block" + (isNow?" now":"") + (isNext?" next-block":"");
+    if (isNow) div.classList.add("open");
+
+    const header = document.createElement("div");
+    header.className = "block-header";
+    header.innerHTML = `
+      <div class="block-dot ${isNow?"pulse":""}"></div>
+      <div class="block-time">${start} – ${end}</div>
+      <div class="block-title">${isNow?"▶ ":""}${title}</div>
+    `;
+    header.onclick = () => div.classList.toggle("open");
+
+    const subWrap = document.createElement("div");
+    subWrap.className = "sub-items";
+
+    (subs || []).forEach(s => {
+      const item = document.createElement("div");
+      item.className = "sub-item";
+      const parts = s.match(/^(\S+)\s(.+)$/);
+      const icon = parts ? parts[1] : "•";
+      const text = parts ? parts[2] : s;
+      item.innerHTML = `<span class="sub-icon">${icon}</span><span class="sub-text">${text}</span>`;
+      subWrap.appendChild(item);
+    });
+
+    // Botão editar
+    const editBtn = document.createElement("button");
+    editBtn.className = "edit-btn";
+    editBtn.innerHTML = "✏️ Editar detalhes";
+    editBtn.onclick = (e) => { e.stopPropagation(); openModal(current, idx); };
+    subWrap.appendChild(editBtn);
+
+    div.appendChild(header);
+    div.appendChild(subWrap);
+    list.appendChild(div);
+
+    // Auto-scroll para o atual
+    if (isNow) setTimeout(() => div.scrollIntoView({behavior:"smooth", block:"center"}), 100);
+  });
+
+  updateBanner();
+}
+
+// ─── MODAL EDITOR ──────────────────────────────────────────────────────────
+let editingDay = null, editingIdx = null;
+
+function openModal(day, idx) {
+  editingDay = day;
+  editingIdx = idx;
+  const block = DATA[day][idx];
+  document.getElementById("modal-title-label").textContent = block[0]+" – "+block[1]+" | "+block[2];
+  document.getElementById("modal-textarea").value = (block[3] || []).join("\n");
+  document.getElementById("modal").classList.add("open");
+}
+
+function closeModal() {
+  document.getElementById("modal").classList.remove("open");
+}
+
+function saveModal() {
+  const lines = document.getElementById("modal-textarea").value
+    .split("\n").map(l => l.trim()).filter(l => l.length > 0);
+  DATA[editingDay][editingIdx][3] = lines;
+  saveData();
+  closeModal();
+  render();
+}
+
+document.getElementById("modal").addEventListener("click", function(e) {
+  if (e.target === this) closeModal();
+});
+
+// ─── INIT ──────────────────────────────────────────────────────────────────
+updateClock();
+render();
+setInterval(() => { updateClock(); updateBanner(); render(); }, 60000);
+</script>
+</body>
+</html>
